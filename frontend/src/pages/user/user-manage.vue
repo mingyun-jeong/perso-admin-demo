@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import UserSearchTable from "@/views/user/user-manage/UserSearchTable.vue";
-import SearchForm from "@/views/user/user-manage/UserSearchForm.vue";
+import UserSearchTable from "@/components/user/user-manage/UserSearchTable.vue";
+import SearchForm from "@/components/user/user-manage/UserSearchForm.vue";
 </script>
 
 <template>

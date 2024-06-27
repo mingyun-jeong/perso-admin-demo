@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import SubscriberTable from "@/views/subscription/subscription-manage/SubscriberTable.vue";
-import CreditHistories from "@/views/subscription/subscription-manage/CreditHistoriesTable.vue";
+import SubscriberTable from "@/components/subscription/subscription-manage/SubscriberTable.vue";
+import CreditHistories from "@/components/subscription/subscription-manage/CreditHistoriesTable.vue";
 
-import SearchForm from "@/views/user/user-manage/UserSearchForm.vue";
+import SearchForm from "@/components/user/user-manage/UserSearchForm.vue";
 </script>
 
 <template>

@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { useRoute } from 'vue-router'
-import AccountSettingsAccount from '@/views/user/user-manage/UserDetails.vue'
+import AccountSettingsAccount from '@/components/user/user-manage/UserDetails.vue'
 
 const route = useRoute()
 

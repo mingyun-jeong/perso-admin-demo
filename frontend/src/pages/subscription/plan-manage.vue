@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import PlanTable from "@/views/subscription/plan-manage/PlanTable.vue";
+import PlanTable from "@/components/subscription/plan-manage/PlanTable.vue";
 </script>
 
 <template>
