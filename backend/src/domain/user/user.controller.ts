@@ -1,5 +1,18 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+  Query,
+  Res,
+} from '@nestjs/common';
 import { UserService } from './user.service';
+import { SearchRequest } from '../../common/request/search-request';
+import { ApiResult } from '../../common/wrapper/ApiResult';
+import { UsersResponse } from '../../common/response/users-response';
 
 @Controller('users')
 export class UserController {
@@ -8,6 +21,14 @@ export class UserController {
   @Get()
   findAll() {
     return this.usersService.findAll();
+  }
+
+  @Get()
+  async userSearch(
+    @Query() request: SearchRequest,
+  ): Promise<ApiResult<UsersResponse[]>> {
+    const result = this.usersService.searchByKeyword(request);
+    return ApiResult.from(result);
   }
 
   @Get(':seq')

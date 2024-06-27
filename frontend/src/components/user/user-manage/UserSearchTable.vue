@@ -1,14 +1,29 @@
 <script setup lang="ts">
-const users = [
-  {
-    userSeq: 1,
-    email: "test@estsoft.com",
-    planName: "Creator",
-    createDate: "2024-11-01",
-    provider: "google",
-    userStatus: "normal",
+import { ref, onMounted } from 'vue';
+
+interface User {
+  userSeq: number;
+  email: string;
+  planName: string;
+  createDate: string;
+  provider: string;
+  userStatus: string;
+}
+
+const users = ref<User[]>([]);
+const fetchUsers = async () => {
+  try {
+    const response = await fetch('http://localhost:3000/users');
+    users.value = await response.json();
+  } catch (error) {
+    console.error('Error fetching users:', error);
   }
-]
+};
+
+onMounted(() => {
+  fetchUsers();
+});
+
 </script>
 
 <template>

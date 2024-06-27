@@ -1,4 +1,4 @@
 export enum PlanType {
-    studio = 'studio',
-    live = 'live'
+  studio = 'studio',
+  live = 'live',
 }

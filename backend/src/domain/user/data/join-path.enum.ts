@@ -1,3 +1,3 @@
 export enum JoinPath {
-    portal = 'portal'
+  portal = 'portal',
 }

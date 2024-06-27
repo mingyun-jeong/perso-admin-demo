@@ -1,7 +1,7 @@
 export class InviteTeamUserModels {
-    accessibleModels: number[];
+  accessibleModels: number[];
 
-    constructor(accessibleModels?: number[]) {
-        this.accessibleModels = accessibleModels || [];
-    }
+  constructor(accessibleModels?: number[]) {
+    this.accessibleModels = accessibleModels || [];
+  }
 }
