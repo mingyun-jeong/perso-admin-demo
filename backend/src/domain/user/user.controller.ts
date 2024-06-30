@@ -9,9 +9,9 @@ import {
   Query,
   Res,
 } from '@nestjs/common';
-import { UserService } from './user.service';
+import { UserService } from './service/user.service';
 import { SearchRequest } from '../../common/request/search-request';
-import { ApiResult } from '../../common/wrapper/ApiResult';
+import { ApiResult } from '../../common/wrapper/api-result';
 import { UsersResponse } from '../../common/response/users-response';
 
 @Controller('users')

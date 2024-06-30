@@ -1,7 +1,10 @@
 import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
 import { TeamStatus } from '../data/team-status.enum';
 
-@Entity('team')
+@Entity({
+  name: 'team',
+  database: 'perso_user',
+})
 export class Team {
   @PrimaryGeneratedColumn()
   seq: number;
