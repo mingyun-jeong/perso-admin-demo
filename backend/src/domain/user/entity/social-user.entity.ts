@@ -1,7 +1,10 @@
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 import { OAuth2Provider } from '../data/oauth2-provider.enum';
 
-@Entity()
+@Entity({
+  name: 'social_user',
+  database: 'perso_user',
+})
 export class SocialUser {
   @PrimaryGeneratedColumn()
   seq: number;

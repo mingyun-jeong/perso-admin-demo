@@ -9,7 +9,10 @@ import { JoinPath } from '../data/join-path.enum';
 import { LoginProvider } from '../data/login-provider.enum';
 import { UserStatus } from '../data/user-status.enum';
 
-@Entity('user')
+@Entity({
+  name: 'user',
+  database: 'perso_user',
+})
 @Unique('UK_email', ['email'])
 export class User extends BaseEntity {
   @PrimaryGeneratedColumn()

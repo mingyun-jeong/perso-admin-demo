@@ -2,7 +2,10 @@ import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
 import { PlanType } from '../../payment/data/plan-type.enum';
 import { InviteTeamUserModels } from '../data/invite-team-user-models';
 
-@Entity('team_invite')
+@Entity({
+  name: 'team_invite',
+  database: 'perso_user',
+})
 export class TeamInvite {
   @PrimaryGeneratedColumn()
   seq: number;
