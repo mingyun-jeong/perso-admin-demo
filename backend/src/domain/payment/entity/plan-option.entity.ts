@@ -32,7 +32,7 @@ export class PlanOption extends BaseTimeEntity {
 
   @ManyToOne(() => Plan, plan => plan.planOptions, { eager: true })
   @JoinColumn({ name: 'planSeq' })
-  plan: Plan
+  plan: Plan;
 
   constructor(planSeq: number, type: PlanType, detail: PlanOptionDetail) {
     super();
