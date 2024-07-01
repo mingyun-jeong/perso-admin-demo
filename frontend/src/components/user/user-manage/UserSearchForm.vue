@@ -1,11 +1,7 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import {ref, provide, inject} from 'vue';
 
 const email = ref('');
-
-const searchEmail = () => {
-  // Implement your search logic here
-};
 
 </script>
 <template>

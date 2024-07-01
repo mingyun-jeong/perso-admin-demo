@@ -1,25 +1,29 @@
 import { Injectable } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
 import { User } from '../entity/user.entity';
 import { CreateUserDto } from '../dto/create-user.dto';
 import { UpdateUserDto } from '../dto/update-user.dto';
-import { SearchRequest } from '../../../common/request/search-request';
-import { UsersResponse } from '../../../common/response/users-response';
+import { SearchType } from "../../../common/data/search-type.enum";
+import { UserQueryBuilderRepository } from "../repository/user-query-builder.repository";
 
 @Injectable()
 export class UserService {
   constructor(
-    @InjectRepository(User)
-    private usersRepository: Repository<User>,
+    private userQueryBuilderRepository: UserQueryBuilderRepository,
   ) {}
+
+  async searchByKeyword(condition: SearchType, keyword: string): Promise<User[]> {
+    if (keyword == null || keyword.trim() === '') {
+      return null;
+    }
+    return await this.userQueryBuilderRepository.search(condition, keyword);
+  }
 
   create(createUserDto: CreateUserDto) {
     return 'This action adds a new user';
   }
 
   findAll(): Promise<User[]> {
-    return this.usersRepository.find();
+    return this.userQueryBuilderRepository.find();
   }
 
   findOne(seq: bigint) {
@@ -34,12 +38,5 @@ export class UserService {
     return `This action removes a #${seq} user`;
   }
 
-  searchByKeyword(request: SearchRequest): UsersResponse[] {
-    if (request.keyword == null || request.keyword.trim() === '') {
-      return [];
-    }
 
-    const response: UsersResponse[] = [];
-    return response;
-  }
 }

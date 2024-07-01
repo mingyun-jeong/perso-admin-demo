@@ -10,6 +10,7 @@ export const adminDatabaseConfig: TypeOrmModuleOptions = {
   database: 'perso_admin',
   entities: [join(__dirname, '../domain/admin/entity/*.entity.*')],
   synchronize: false,
+  logging: true,
 };
 
 export const userDatabaseConfig: TypeOrmModuleOptions = {
@@ -21,6 +22,7 @@ export const userDatabaseConfig: TypeOrmModuleOptions = {
   database: 'perso_user',
   entities: [join(__dirname, '../domain/user/entity/*.entity.*')],
   synchronize: false,
+  logging: true,
 };
 
 export const authDatabaseConfig: TypeOrmModuleOptions = {
@@ -32,6 +34,7 @@ export const authDatabaseConfig: TypeOrmModuleOptions = {
   database: 'perso_auth',
   entities: [join(__dirname, '../domain/auth/entity/*.entity.*')],
   synchronize: false,
+  logging: true,
 };
 
 export const paymentDatabaseConfig: TypeOrmModuleOptions = {
@@ -43,6 +46,7 @@ export const paymentDatabaseConfig: TypeOrmModuleOptions = {
   database: 'perso_payment',
   entities: [join(__dirname, '../domain/payment/entity/*.entity.*')],
   synchronize: false,
+  logging: true,
 };
 
 export const studioDatabaseConfig: TypeOrmModuleOptions = {
@@ -54,4 +58,5 @@ export const studioDatabaseConfig: TypeOrmModuleOptions = {
   database: 'perso_studio',
   entities: [join(__dirname, '../domain/studio/entity/*.entity.*')],
   synchronize: false,
+  logging: true,
 };
