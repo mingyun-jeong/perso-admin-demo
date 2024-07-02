@@ -10,8 +10,7 @@ const account = {
 }
 
 const accountDataLocal = ref(structuredClone(account))
-const isAccountDeactivated = ref(
-  false)
+const isAccountDeactivated = ref(false)
 const resetForm = () => {
   accountDataLocal.value = structuredClone(account)
 }

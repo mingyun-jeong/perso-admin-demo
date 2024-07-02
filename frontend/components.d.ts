@@ -7,6 +7,8 @@ export {}
 
 declare module 'vue' {
   export interface GlobalComponents {
+    Account: typeof import('@/components/user/user-detail/AccountSettings.vue')['default']
+    AccountSettings: typeof import('./src/components/user/user-detail/AccountSettings.vue')['default']
     AuthProvider: typeof import('./src/components/user/authentication/AuthProvider.vue')['default']
     CardStatisticsHorizontal: typeof import('./src/@core/components/cards/CardStatisticsHorizontal.vue')['default']
     CardStatisticsVertical: typeof import('./src/@core/components/cards/CardStatisticsVertical.vue')['default']
@@ -19,9 +21,10 @@ declare module 'vue' {
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     SubscriberTable: typeof import('./src/components/subscription/subscription-manage/SubscriberTable.vue')['default']
+    SubscroptionSettings: typeof import('./src/components/user/user-detail/SubscroptionSettings.vue')['default']
     ThemeSwitcher: typeof import('./src/@core/components/ThemeSwitcher.vue')['default']
     UpgradeToPro: typeof import('./src/components/UpgradeToPro.vue')['default']
-    UserDetails: typeof import('./src/components/user/user-manage/UserDetails.vue')['default']
+    UserDetails: typeof import('@/components/user/user-detail/AccountSettings.vue')['default']
     UserSearchForm: typeof import('./src/components/user/user-manage/UserSearchForm.vue')['default']
     UserSearchTable: typeof import('./src/components/user/user-manage/UserSearchTable.vue')['default']
   }
