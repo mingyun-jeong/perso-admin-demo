@@ -1,26 +1,27 @@
 import { Injectable } from '@nestjs/common';
-import { UserService } from "./service/user.service";
-import { SubscriberService } from "../payment/service/subscriber.service";
-import { PlanService } from "../payment/service/plan.service";
-import { SearchType } from "../../common/data/search-type.enum";
-import {UsersResponse} from "../../common/response/users-response";
-import {User} from "./entity/user.entity";
+import { UserService } from './service/user.service';
+import { SearchType } from '../../common/data/search-type.enum';
+import { User } from './entity/user.entity';
+import { UserDto } from './dto/user.dto';
 
 @Injectable()
 export class UserFacade {
-    constructor(
-        private userService: UserService,
-    ) {}
+  constructor(private userService: UserService) {}
 
-    findAll() {
-        return this.userService.findAll();
-    }
+  findAll() {
+    return this.userService.findAll();
+  }
 
-    searchByKeyword(condition: SearchType, keyword: string) : Promise<User[]> {
-        return this.userService.searchByKeyword(condition, keyword);
-    }
+  async searchByKeyword(
+    condition: SearchType,
+    keyword: string,
+  ): Promise<UserDto[]> {
+    const users: User[] = await this.userService.searchByKeyword(
+      condition,
+      keyword,
+    );
+    return users.map(user => UserDto.create(user));
+  }
 
-    findOne(seq: bigint) {
-        
-    }
+  findOne(seq: bigint) {}
 }

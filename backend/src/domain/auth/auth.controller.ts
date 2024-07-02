@@ -11,6 +11,4 @@ import {
 } from '@nestjs/common';
 
 @Controller('admin')
-export class AuthController {
-
-}
+export class AuthController {}

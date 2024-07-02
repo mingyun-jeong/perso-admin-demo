@@ -5,19 +5,19 @@ export const routes = [
     children: [
       {
         path: 'users',
-        component: () => import('@/pages/user/user-manage.vue'),
+        component: () => import('@/pages/user/UserManage.vue'),
       },
       {
         path: 'users/detail',
-        component: () => import('@/pages/user/user-detail.vue'),
+        component: () => import('@/pages/user/UserDetail.vue'),
       },
       {
         path: 'plans',
-        component: () => import('@/pages/subscription/plan-manage.vue'),
+        component: () => import('@/pages/subscription/PlanManage.vue'),
       },
       {
         path: 'subscription',
-        component: () => import('@/pages/subscription/subscription-manage.vue'),
+        component: () => import('@/pages/subscription/SubscriptionManage.vue'),
       },
     ],
   },

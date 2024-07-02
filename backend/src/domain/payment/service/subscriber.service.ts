@@ -1,8 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { Subscriber } from "../entity/subscriber.entity";
-import { SubscriberOption } from "../entity/subscriber-option.entity";
+import { Subscriber } from '../entity/subscriber.entity';
+import { SubscriberOption } from '../entity/subscriber-option.entity';
 
 @Injectable()
 export class SubscriberService {
@@ -13,5 +13,4 @@ export class SubscriberService {
     @InjectRepository(SubscriberOption)
     private subscriberOptionRepository: Repository<SubscriberOption>,
   ) {}
-
 }

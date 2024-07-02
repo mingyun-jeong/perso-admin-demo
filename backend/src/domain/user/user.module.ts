@@ -11,10 +11,10 @@ import { TeamModel } from './entity/team-model.entity';
 import { TeamUser } from './entity/team-user.entity';
 import { TeamUserDetail } from './data/team-user-detail';
 import { User } from './entity/user.entity';
-import {UserQueryBuilderRepository} from "./repository/user-query-builder.repository";
-import {UserFacade} from "./user.facade";
-import {PlanService} from "../payment/service/plan.service";
-import {SubscriberService} from "../payment/service/subscriber.service";
+import { UserQueryBuilderRepository } from './repository/user-query-builder.repository';
+import { UserFacade } from './user.facade';
+import { PlanService } from '../payment/service/plan.service';
+import { SubscriberService } from '../payment/service/subscriber.service';
 
 @Module({
   imports: [

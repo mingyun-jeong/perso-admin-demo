@@ -2,16 +2,17 @@ import { Injectable } from '@nestjs/common';
 import { User } from '../entity/user.entity';
 import { CreateUserDto } from '../dto/create-user.dto';
 import { UpdateUserDto } from '../dto/update-user.dto';
-import { SearchType } from "../../../common/data/search-type.enum";
-import { UserQueryBuilderRepository } from "../repository/user-query-builder.repository";
+import { SearchType } from '../../../common/data/search-type.enum';
+import { UserQueryBuilderRepository } from '../repository/user-query-builder.repository';
 
 @Injectable()
 export class UserService {
-  constructor(
-    private userQueryBuilderRepository: UserQueryBuilderRepository,
-  ) {}
+  constructor(private userQueryBuilderRepository: UserQueryBuilderRepository) {}
 
-  async searchByKeyword(condition: SearchType, keyword: string): Promise<User[]> {
+  async searchByKeyword(
+    condition: SearchType,
+    keyword: string,
+  ): Promise<User[]> {
     if (keyword == null || keyword.trim() === '') {
       return null;
     }
@@ -37,6 +38,4 @@ export class UserService {
   remove(seq: bigint) {
     return `This action removes a #${seq} user`;
   }
-
-
 }

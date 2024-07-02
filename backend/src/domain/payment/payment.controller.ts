@@ -12,6 +12,4 @@ import {
 import { PlanService } from './service/plan.service';
 
 @Controller('users')
-export class PaymentController {
-
-}
+export class PaymentController {}

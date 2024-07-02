@@ -9,12 +9,9 @@ import {
   Query,
   Res,
 } from '@nestjs/common';
-import { UserService } from './service/user.service';
 import { SearchRequest } from '../../common/request/search-request';
-import { ApiResult } from '../../common/wrapper/api-result';
-import { UsersResponse } from '../../common/response/users-response';
-import {UserFacade} from "./user.facade";
-import {User} from "./entity/user.entity";
+import { UserFacade } from './user.facade';
+import { UserDto } from './dto/user.dto';
 
 @Controller('users')
 export class UserController {
@@ -26,7 +23,7 @@ export class UserController {
   }
 
   @Get('/search')
-  async userSearch(@Query() request: SearchRequest)  : Promise<User[]> {
+  async userSearch(@Query() request: SearchRequest): Promise<UserDto[]> {
     return this.userFacade.searchByKeyword(request.condition, request.keyword);
   }
 

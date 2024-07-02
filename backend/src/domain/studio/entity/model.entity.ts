@@ -19,7 +19,7 @@ export class StudioModel {
     name: 'status',
     type: 'enum',
     enum: StudioModelStatus,
-    nullable: false
+    nullable: false,
   })
   status: StudioModelStatus;
 
@@ -29,7 +29,7 @@ export class StudioModel {
   @Column({ name: 'update_at', type: 'timestamp' })
   updateAt: Date;
 
-  @Column({ name: 'gender'})
+  @Column({ name: 'gender' })
   gender: string;
 
   @Column({ name: 'sample_voice_path' })

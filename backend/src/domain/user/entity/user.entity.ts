@@ -1,20 +1,15 @@
-import {
-  BaseEntity,
-  Column,
-  Entity,
-  PrimaryGeneratedColumn,
-  Unique,
-} from 'typeorm';
+import { Column, Entity, PrimaryGeneratedColumn, Unique } from 'typeorm';
 import { JoinPath } from '../data/join-path.enum';
 import { LoginProvider } from '../data/login-provider.enum';
 import { UserStatus } from '../data/user-status.enum';
+import { BaseTimeEntity } from '../../../common/entity/base-time.entity';
 
 @Entity({
   name: 'user',
   database: 'perso_user',
 })
 @Unique('UK_email', ['email'])
-export class User extends BaseEntity {
+export class User extends BaseTimeEntity {
   @PrimaryGeneratedColumn()
   seq: number;
 
