@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted, inject } from 'vue';
+import { ref, onMounted, inject, defineProps } from 'vue';
 
 interface User {
   seq: number;
@@ -15,10 +15,20 @@ interface User {
   updateDate: Date;
 }
 
+const props = defineProps({
+  email: {
+    type: String,
+    required: true,
+  }
+});
+
 const users = ref<User[]>([]);
 const keyword = inject('keyword');
 
-const fetchUsers = async () => {
+const fetchUsers = async (email: string) => {
+  console.log('fetching users props email', props.email);
+  console.log('fetching users email', email);
+
   try {
     const response = await fetch('http://localhost:3000/users/search?keyword=' + keyword + 'condition=email');
     users.value = await response.json();
@@ -27,9 +37,15 @@ const fetchUsers = async () => {
   }
 };
 
-onMounted(() => {
-  fetchUsers();
+watch(() => props.email, (newEmail) => {
+  // if (newEmail) {
+  fetchUsers(newEmail);
+  // }
 });
+
+// onMounted(() => {
+//   fetchUsers();
+// });
 
 </script>
 
