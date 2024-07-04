@@ -21,7 +21,7 @@ declare module 'vue' {
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     SubscriberTable: typeof import('./src/components/subscription/subscription-manage/SubscriberTable.vue')['default']
-    SubscroptionSettings: typeof import('./src/components/user/user-detail/SubscroptionSettings.vue')['default']
+    SubscriptionSettings: typeof import('./src/components/user/user-detail/SubscriptionSettings.vue')['default']
     ThemeSwitcher: typeof import('./src/@core/components/ThemeSwitcher.vue')['default']
     UpgradeToPro: typeof import('./src/components/UpgradeToPro.vue')['default']
     UserDetails: typeof import('@/components/user/user-detail/AccountSettings.vue')['default']

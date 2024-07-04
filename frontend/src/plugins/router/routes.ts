@@ -7,8 +7,12 @@ export const routes = [
         path: 'users',
         component: () => import('@/pages/user/user-manage.vue'),
       },
+      // {
+      //   path: 'users/detail',
+      //   component: () => import('@/pages/user/user-detail.vue'),
+      // },
       {
-        path: 'users/detail',
+        path: '/users/detail/:seq',
         component: () => import('@/pages/user/user-detail.vue'),
       },
       {

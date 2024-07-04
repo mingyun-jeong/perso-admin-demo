@@ -1,18 +1,19 @@
 <script setup lang="ts">
 import { ref, onMounted, inject, defineProps } from 'vue';
+import {User} from "@/interface/User";
 
-interface User {
-  seq: number;
-  email: string;
-  password: string;
-  name: string;
-  provider: string;
-  joinPath: string;
-  userStatus: string;
-  lastLoginDate: Date;
-  lastPasswordChangeDate: Date;
-  createDate: Date;
-}
+// interface User {
+//   seq: number;
+//   email: string;
+//   password: string;
+//   name: string;
+//   provider: string;
+//   joinPath: string;
+//   userStatus: string;
+//   lastLoginDate: Date;
+//   lastPasswordChangeDate: Date;
+//   createDate: Date;
+// }
 
 const props = defineProps({
   email: {
@@ -58,7 +59,7 @@ if (watch) {
           {{ item.seq }}
         </td>
         <td class="text-center">
-          <router-link :to="`/users/detail`">{{ item.email }}</router-link>
+          <router-link :to="`/users/detail/${item.seq}`">{{ item.email }}</router-link>
         </td>
         <td class="text-center">
           {{ item.createDate }}

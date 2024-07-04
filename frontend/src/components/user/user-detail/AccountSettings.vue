@@ -1,5 +1,8 @@
 <script lang="ts" setup>
 
+import {defineProps, ref, watch} from 'vue';
+import {User} from "@/interface/User";
+
 const account = {
   name: 'john',
   email: 'johnDoe@example.com',
@@ -9,11 +12,25 @@ const account = {
   isActive: true,
 }
 
-const accountDataLocal = ref(structuredClone(account))
-const isAccountDeactivated = ref(false)
+// props 정의
+const props = defineProps<{
+  user: User | null;
+}>();
+
+// local state 선언
+const userDataLocal = ref<User | null>(null);
+const isAccountDeactivated = ref(false);
 const resetForm = () => {
-  accountDataLocal.value = structuredClone(account)
-}
+  userDataLocal.value = props.user ? props.user : null;
+};
+
+// user props 값이 변경되면 즉시 userDataLocal 업데이트
+watch(() => props.user, (newVal) => {
+  userDataLocal.value = newVal ? newVal : null;
+}, {immediate: true});
+
+// user 변수에 할당해서 사용 가능
+// const user = computed(() => userDataLocal.value);
 
 </script>
 
@@ -27,31 +44,30 @@ const resetForm = () => {
             <VRow>
               <VCol md="6" cols="12">
                 <VTextField
-                  v-model="account.name"
-                  label="이름"
+                  placeholder="이름"
+                  :value="userDataLocal?.name"
                 />
               </VCol>
 
               <VCol md="6" cols="12">
                 <VTextField
-                  v-model="account.email"
-                  label="E-mail"
+                  :value="userDataLocal?.email"
                   placeholder="johndoe@gmail.com"
                   type="email"
                 />
               </VCol>
 
-              <VCol md="6" cols="12">
-                <VTextField
-                  v-model="account.team"
-                  label="팀"
-                />
-              </VCol>
+              <!--              <VCol md="6" cols="12">-->
+              <!--                <VTextField-->
+              <!--                  :value="account.team"-->
+              <!--                  placeholder="팀"-->
+              <!--                />-->
+              <!--              </VCol>-->
 
               <VCol md="6" cols="12">
                 <VTextField
-                  v-model="account.createDate"
-                  label="가입일"
+                  :value="userDataLocal?.createDate"
+                  placeholder="가입일"
                 />
               </VCol>
             </VRow>
@@ -59,14 +75,14 @@ const resetForm = () => {
             <VRow>
               <VCol md="6" cols="12">
                 <VTextField
-                  v-model="account.provider"
-                  label="가입 타입"
+                  :value="userDataLocal?.loginProvider"
+                  placeholder="가입 타입"
                 />
               </VCol>
               <VCol md="6" cols="12">
                 <VTextField
-                  v-model="account.isActive"
-                  label="활성 여부"
+                  :value="userDataLocal?.userStatus"
+                  placeholder="활성 여부"
                 />
               </VCol>
             </VRow>
