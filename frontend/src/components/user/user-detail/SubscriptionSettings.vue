@@ -6,6 +6,14 @@ let waterMark = ref(false)
 let fhd = ref(false)
 let uhd = ref(false)
 
+const plan = {
+  name: 'Creator',
+  msTts: true,
+  waterMark: true,
+  fhd: true,
+  uhd: false,
+}
+
 </script>
 <template>
   <VCard title="Subscription">
@@ -42,7 +50,10 @@ let uhd = ref(false)
 
         <VRow>
           <VCol cols="4">
-            <VTextField label="프로젝트 생성 개수"/>
+            <VTextField
+              label="프로젝트 생성 개수"
+              :value="plan.name === 'Creator' ? 10 : 3"
+            />
           </VCol>
           <VCol cols="4">
             <VTextField label="영상 내보내기 시간(분)"/>

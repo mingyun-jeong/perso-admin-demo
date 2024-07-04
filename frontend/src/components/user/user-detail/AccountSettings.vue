@@ -3,34 +3,37 @@
 import {defineProps, ref, watch} from 'vue';
 import {User} from "@/interface/User";
 
-const account = {
-  name: 'john',
-  email: 'johnDoe@example.com',
-  team: 'My Team',
-  createDate: '2024-05-01',
-  provider: 'google',
-  isActive: true,
-}
-
 // props 정의
 const props = defineProps<{
   user: User | null;
 }>();
 
 // local state 선언
-const userDataLocal = ref<User | null>(null);
+const userData = ref<User | null>(null);
+const email = ref();
+const userName = ref();
+const createDate = ref();
+const provider = ref();
+const userStatus = ref();
+
 const isAccountDeactivated = ref(false);
 const resetForm = () => {
-  userDataLocal.value = props.user ? props.user : null;
+  userData.value = props.user ? props.user : null;
 };
 
 // user props 값이 변경되면 즉시 userDataLocal 업데이트
-watch(() => props.user, (newVal) => {
-  userDataLocal.value = newVal ? newVal : null;
+watch(() => props.user, (obj) => {
+  userData.value = obj ? obj : null;
+  userName.value = obj ? obj.name : null;
+  email.value = obj ? obj.email : null;
+  provider.value = obj ? obj.loginProvider : null;
+  userStatus.value = obj ? obj.userStatus : null;
+  createDate.value = obj ? obj.createDate : null;
 }, {immediate: true});
 
 // user 변수에 할당해서 사용 가능
 // const user = computed(() => userDataLocal.value);
+
 
 </script>
 
@@ -40,52 +43,50 @@ watch(() => props.user, (newVal) => {
       <VCard title="Account Details">
         <VCardText>
           <!-- 👉 Form -->
-          <VForm class="mt-6">
+          <VForm>
             <VRow>
-              <VCol md="6" cols="12">
+              <VCol cols="4">
                 <VTextField
-                  placeholder="이름"
-                  :value="userDataLocal?.name"
+                  label="이름"
+                  v-model="userName"
                 />
               </VCol>
 
-              <VCol md="6" cols="12">
+              <VCol cols="4">
                 <VTextField
-                  :value="userDataLocal?.email"
-                  placeholder="johndoe@gmail.com"
+                  label="E-mail"
+                  v-model="email"
                   type="email"
+                  readonly="true"
+                  :value="userData?.email"
                 />
               </VCol>
-
-              <!--              <VCol md="6" cols="12">-->
-              <!--                <VTextField-->
-              <!--                  :value="account.team"-->
-              <!--                  placeholder="팀"-->
-              <!--                />-->
-              <!--              </VCol>-->
-
-              <VCol md="6" cols="12">
-                <VTextField
-                  :value="userDataLocal?.createDate"
-                  placeholder="가입일"
-                />
+              <VCol cols="4">
+                <VSwitch v-model="userStatus">
+                  <template #label>활성 여부</template>
+                </VSwitch>
               </VCol>
             </VRow>
 
             <VRow>
-              <VCol md="6" cols="12">
+              <VCol cols="4">
                 <VTextField
-                  :value="userDataLocal?.loginProvider"
-                  placeholder="가입 타입"
+                  label="가입 타입"
+                  readonly="true"
+                  v-model="provider"
+                  :value="userData?.loginProvider"
                 />
               </VCol>
-              <VCol md="6" cols="12">
+              <VCol cols="4">
                 <VTextField
-                  :value="userDataLocal?.userStatus"
-                  placeholder="활성 여부"
+                  label="가입일"
+                  readonly="true"
+                  v-model="createDate"
+                  :value="userData?.createDate"
                 />
               </VCol>
             </VRow>
+
           </VForm>
         </VCardText>
 

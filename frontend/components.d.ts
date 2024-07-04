@@ -7,7 +7,6 @@ export {}
 
 declare module 'vue' {
   export interface GlobalComponents {
-    Account: typeof import('@/components/user/user-detail/AccountSettings.vue')['default']
     AccountSettings: typeof import('./src/components/user/user-detail/AccountSettings.vue')['default']
     AuthProvider: typeof import('./src/components/user/authentication/AuthProvider.vue')['default']
     CardStatisticsHorizontal: typeof import('./src/@core/components/cards/CardStatisticsHorizontal.vue')['default']
@@ -15,7 +14,6 @@ declare module 'vue' {
     CardStatisticsWithImages: typeof import('./src/@core/components/cards/CardStatisticsWithImages.vue')['default']
     CreditHistoriesTable: typeof import('./src/components/subscription/subscription-manage/CreditHistoriesTable.vue')['default']
     ErrorHeader: typeof import('./src/components/ErrorHeader.vue')['default']
-    HelloWorld: typeof import('./src/components/HelloWorld.vue')['default']
     MoreBtn: typeof import('./src/@core/components/MoreBtn.vue')['default']
     PlanTable: typeof import('./src/components/subscription/plan-manage/PlanTable.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
@@ -23,8 +21,6 @@ declare module 'vue' {
     SubscriberTable: typeof import('./src/components/subscription/subscription-manage/SubscriberTable.vue')['default']
     SubscriptionSettings: typeof import('./src/components/user/user-detail/SubscriptionSettings.vue')['default']
     ThemeSwitcher: typeof import('./src/@core/components/ThemeSwitcher.vue')['default']
-    UpgradeToPro: typeof import('./src/components/UpgradeToPro.vue')['default']
-    UserDetails: typeof import('@/components/user/user-detail/AccountSettings.vue')['default']
     UserSearchForm: typeof import('./src/components/user/user-manage/UserSearchForm.vue')['default']
     UserSearchTable: typeof import('./src/components/user/user-manage/UserSearchTable.vue')['default']
   }

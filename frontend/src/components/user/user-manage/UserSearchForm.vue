@@ -12,7 +12,7 @@ const handleSubmit = () => {
 <!--  <VForm @submit.prevent="() => {}">-->
   <VForm @submit.prevent="handleSubmit">
     <VRow>
-      <VCol cols="10">
+      <VCol cols="4">
         <VTextField
           v-model="email"
           label="Email"
@@ -20,13 +20,6 @@ const handleSubmit = () => {
           prepend-inner-icon="ri-mail-line"
           placeholder="이메일을 입력하세요."
         />
-      </VCol>
-      <VCol
-        class="d-flex gap-4"
-      >
-        <VBtn type="submit">
-          Submit
-        </VBtn>
       </VCol>
     </VRow>
   </VForm>
