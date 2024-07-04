@@ -6,7 +6,7 @@ import { StudioModel } from '../entity/model.entity';
 @Injectable()
 export class StudioService {
   constructor(
-    @InjectRepository(StudioModel)
+    @InjectRepository(StudioModel, 'studioDataSource')
     private studioModelRepository: Repository<StudioModel>,
   ) {}
 

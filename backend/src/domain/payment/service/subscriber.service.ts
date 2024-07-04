@@ -1,16 +1,20 @@
-import { Injectable } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
-import { Subscriber } from '../entity/subscriber.entity';
-import { SubscriberOption } from '../entity/subscriber-option.entity';
+import {Injectable} from '@nestjs/common';
+import {Subscriber} from '../entity/subscriber.entity';
+import {SubscriberQueryBuilderRepository} from "../repository/subscriber-query-builder.repository";
 
 @Injectable()
 export class SubscriberService {
   constructor(
-    @InjectRepository(Subscriber)
-    private subscriberRepository: Repository<Subscriber>,
+    private subscriberQueryBuilderRepository: SubscriberQueryBuilderRepository,
+  ) {
 
-    @InjectRepository(SubscriberOption)
-    private subscriberOptionRepository: Repository<SubscriberOption>,
-  ) {}
+  }
+
+  findByUserSeq(userSeq: number): Promise<Subscriber[]> {
+    return this.subscriberQueryBuilderRepository.findBy(userSeq)
+  }
+
+  findAll(): Promise<Subscriber[]> {
+    return this.subscriberQueryBuilderRepository.find();
+  }
 }

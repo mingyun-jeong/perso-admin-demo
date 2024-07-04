@@ -1,14 +1,14 @@
 import {Injectable} from '@nestjs/common';
 import {DataSource, Repository} from 'typeorm';
 import {User} from '../entity/user.entity';
+import {InjectRepository} from "@nestjs/typeorm";
 
 @Injectable()
 export class UserQueryBuilderRepository {
-    private userRepository: Repository<User>;
-
-    constructor(private readonly dataSource: DataSource) {
-        this.userRepository = this.dataSource.getRepository(User);
-    }
+    constructor(
+        @InjectRepository(User, 'userDataSource')
+        private userRepository: Repository<User>
+    ) { }
 
     async search(condition: string, keyword: string): Promise<User[]> {
         const query = this.userRepository.createQueryBuilder('user');

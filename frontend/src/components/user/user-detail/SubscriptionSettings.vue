@@ -1,18 +1,16 @@
 <script lang="ts" setup>
+// props 정의
+import {defineProps, watch} from "vue";
+import {Plan} from "@/interface/Plan";
 
-const selectedPlan = ref('Creator')
-let msTts = ref(false)
-let waterMark = ref(false)
-let fhd = ref(false)
-let uhd = ref(false)
+const props = defineProps<{
+  plan: Plan | null;
+}>();
 
-const plan = {
-  name: 'Creator',
-  msTts: true,
-  waterMark: true,
-  fhd: true,
-  uhd: false,
-}
+watch(() => props.plan, (obj) => {
+  console.log(obj);
+
+}, {immediate: true});
 
 </script>
 <template>
@@ -26,7 +24,7 @@ const plan = {
         </VRow>
         <VRow>
           <VCol cols="6" sm="2">
-            <VSelect v-model="selectedPlan" mandatory :items="['Free', 'Creator']"/>
+            <VSelect :items="['Free', 'Creator']"/>
           </VCol>
         </VRow>
 
@@ -37,12 +35,12 @@ const plan = {
         </VRow>
         <VRow>
           <VCol cols="1">
-            <VSwitch v-model="msTts">
+            <VSwitch>
               <template #label>MS-TTS</template>
             </VSwitch>
           </VCol>
           <VCol cols="1">
-            <VSwitch v-model="waterMark">
+            <VSwitch>
               <template #label>워터마크</template>
             </VSwitch>
           </VCol>
@@ -52,7 +50,6 @@ const plan = {
           <VCol cols="4">
             <VTextField
               label="프로젝트 생성 개수"
-              :value="plan.name === 'Creator' ? 10 : 3"
             />
           </VCol>
           <VCol cols="4">
@@ -75,12 +72,12 @@ const plan = {
         </VRow>
         <VRow>
           <VCol cols="1">
-            <VCheckbox v-model="fhd">
+            <VCheckbox>
               <template #label>FHD</template>
             </VCheckbox>
           </VCol>
           <VCol cols="1">
-            <VCheckbox v-model="uhd">
+            <VCheckbox>
               <template #label>UHD</template>
             </VCheckbox>
           </VCol>

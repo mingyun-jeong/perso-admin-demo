@@ -6,7 +6,7 @@ import { RefreshToken } from '../entity/refresh-token.entity';
 @Injectable()
 export class AuthService {
   constructor(
-    @InjectRepository(RefreshToken)
+    @InjectRepository(RefreshToken, 'authDataSource')
     private refreshTokenRepository: Repository<RefreshToken>,
   ) {}
 

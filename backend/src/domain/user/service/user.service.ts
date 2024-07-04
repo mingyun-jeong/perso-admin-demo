@@ -7,7 +7,9 @@ import {UserQueryBuilderRepository} from '../repository/user-query-builder.repos
 
 @Injectable()
 export class UserService {
-    constructor(private userQueryBuilderRepository: UserQueryBuilderRepository) {
+    constructor(
+        private userQueryBuilderRepository: UserQueryBuilderRepository
+    ) {
     }
 
     async searchByKeyword(

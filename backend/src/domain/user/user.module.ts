@@ -27,7 +27,7 @@ import { SubscriberService } from '../payment/service/subscriber.service';
       TeamModel,
       TeamUser,
       TeamUserDetail,
-    ]),
+    ], 'userDataSource'),
   ],
   controllers: [UserController],
   providers: [UserFacade, UserService, UserQueryBuilderRepository],

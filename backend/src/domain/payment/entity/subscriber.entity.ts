@@ -21,24 +21,25 @@ export class Subscriber extends BaseTimeEntity {
   @PrimaryGeneratedColumn()
   seq: number;
 
-  @Column()
+  @Column({name: 'user_seq'})
   userSeq: number;
 
-  @Column()
+  @Column({name: 'plan_seq'})
   planSeq: number;
 
-  @Column()
+  @Column({name: 'plan_price_seq'})
   planPriceSeq: number;
 
-  @Column()
+  @Column({name: 'customer_id'})
   customerId: string;
 
-  @Column()
+  @Column({name: 'subscription_id'})
   subscriptionId: string;
 
   @Column({
     type: 'enum',
     enum: SubscriptionStatus,
+    name: 'status',
   })
   status: SubscriptionStatus;
 
@@ -49,19 +50,19 @@ export class Subscriber extends BaseTimeEntity {
   })
   division: PlanDivision;
 
-  @Column()
+  @Column({name: 'is_cancellation_scheduled'})
   isCancellationScheduled: boolean;
 
-  @Column({ type: 'timestamp' })
+  @Column({ type: 'timestamp', name: 'start_date'})
   startDate: Date;
 
-  @Column({ type: 'timestamp' })
+  @Column({ type: 'timestamp', name: 'end_date'})
   endDate: Date;
 
-  @Column({ type: 'timestamp' })
+  @Column({ type: 'timestamp', name: 'cancel_date'})
   cancelDate: Date;
 
-  @Column({ type: 'timestamp' })
+  @Column({ type: 'timestamp', name: 'ended_date'})
   endedDate: Date;
 
   @OneToMany(
@@ -72,11 +73,11 @@ export class Subscriber extends BaseTimeEntity {
   subscriberOptions: SubscriberOption[];
 
   @OneToOne(() => Plan, { lazy: true })
-  @JoinColumn({ name: 'planSeq' })
+  @JoinColumn({ name: 'plan_seq' })
   plan: Plan;
 
   @OneToOne(() => PlanPrice, { lazy: true })
-  @JoinColumn({ name: 'planPriceSeq' })
+  @JoinColumn({ name: 'plan_price_seq' })
   planPrice: PlanPrice;
 
   constructor(

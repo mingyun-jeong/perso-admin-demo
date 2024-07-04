@@ -9,7 +9,20 @@ import {
   Query,
   Res,
 } from '@nestjs/common';
-import { PlanService } from './service/plan.service';
+import {PaymentFacade} from "./payment.facade";
+import {SubscriberDto} from "./dto/subscriber.dto";
+import {Subscriber} from "./entity/subscriber.entity";
 
-@Controller('users')
-export class PaymentController {}
+@Controller('payment')
+export class PaymentController {
+  constructor(
+      private paymentFacade: PaymentFacade
+  ) {
+  }
+
+  @Get('/subscription')
+  async subscription(@Query('userSeq') userSeq: number): Promise<SubscriberDto[]> {
+    return this.paymentFacade.getUserSubscription(userSeq);
+  }
+
+}

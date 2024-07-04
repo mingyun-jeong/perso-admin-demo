@@ -3,6 +3,7 @@ import { join } from 'path';
 
 export const adminDatabaseConfig: TypeOrmModuleOptions = {
   type: 'mysql',
+  name: 'adminDataSource',
   host: 'localhost',
   port: 3306,
   username: 'root',
@@ -15,6 +16,7 @@ export const adminDatabaseConfig: TypeOrmModuleOptions = {
 
 export const userDatabaseConfig: TypeOrmModuleOptions = {
   type: 'mysql',
+  name: 'userDataSource',
   host: 'localhost',
   port: 3306,
   username: 'root',
@@ -27,6 +29,7 @@ export const userDatabaseConfig: TypeOrmModuleOptions = {
 
 export const authDatabaseConfig: TypeOrmModuleOptions = {
   type: 'mysql',
+  name: 'authDataSource',
   host: 'localhost',
   port: 3306,
   username: 'root',
@@ -39,6 +42,7 @@ export const authDatabaseConfig: TypeOrmModuleOptions = {
 
 export const paymentDatabaseConfig: TypeOrmModuleOptions = {
   type: 'mysql',
+  name: 'paymentDataSource',
   host: 'localhost',
   port: 3306,
   username: 'root',
@@ -51,6 +55,7 @@ export const paymentDatabaseConfig: TypeOrmModuleOptions = {
 
 export const studioDatabaseConfig: TypeOrmModuleOptions = {
   type: 'mysql',
+  name: 'studioDataSource',
   host: 'localhost',
   port: 3306,
   username: 'root',

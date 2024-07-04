@@ -6,7 +6,12 @@ import { StudioController } from './studio.controller';
 import { StudioService } from './service/studio.service';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([StudioModel, Language])],
+  imports: [
+    TypeOrmModule.forFeature([
+      StudioModel,
+      Language
+    ], 'studioDataSource')
+  ],
   controllers: [StudioController],
   providers: [StudioService],
 })

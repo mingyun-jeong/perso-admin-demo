@@ -20,6 +20,15 @@ const fetchUserDetail = async (seq: number) => {
   try {
     const response = await fetch(`http://localhost:3000/users/${seq}`);
     user.value = await response.json();
+  } catch (error) {
+    console.error('Error fetching user details:', error);
+  }
+};
+
+const fetchSubscription = async (seq: number) => {
+  try {
+    const response = await fetch(`http://localhost:3000/plans/${seq}`);
+    user.value = await response.json();
     console.log(user.value);
   } catch (error) {
     console.error('Error fetching user details:', error);

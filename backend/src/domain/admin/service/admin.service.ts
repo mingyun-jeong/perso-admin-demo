@@ -8,13 +8,13 @@ import { Role } from '../entity/role.entity';
 @Injectable()
 export class AdminService {
   constructor(
-    @InjectRepository(Admin)
+    @InjectRepository(Admin, 'adminDataSource')
     private adminRepository: Repository<Admin>,
 
-    @InjectRepository(AdminRoles)
+    @InjectRepository(AdminRoles, 'adminDataSource')
     private adminRolesRepository: Repository<AdminRoles>,
 
-    @InjectRepository(Role)
+    @InjectRepository(Role, 'adminDataSource')
     private roleRepository: Repository<Role>,
   ) {}
 

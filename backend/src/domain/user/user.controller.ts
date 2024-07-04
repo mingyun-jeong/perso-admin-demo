@@ -5,7 +5,9 @@ import {UserDto} from './dto/user.dto';
 
 @Controller('users')
 export class UserController {
-    constructor(private userFacade: UserFacade) {
+    constructor(
+        private userFacade: UserFacade,
+    ) {
     }
 
     @Get()
